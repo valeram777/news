@@ -3,8 +3,8 @@
   "expoServerPort": 19000,
   "packagerPort": 19000,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerNgrokUrl": "https://ub-na4.valeram.news.exp.direct",
+  "packagerNgrokUrl": "https://packager.ub-na4.valeram.news.exp.direct",
+  "ngrokPid": 16204,
   "webpackServerPort": null
 }

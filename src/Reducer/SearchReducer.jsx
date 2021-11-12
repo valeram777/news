@@ -5,9 +5,10 @@ const initState = {
  word:'',
  lang:1,
  index:0,
- pageSize:20,
+ pageSize:5,
  page:1,
- totalResults:0
+ totalResults:0,
+ totalPage:0
 }
 
 export const SearchReducer = (state =initState, action) => {
