@@ -1,11 +1,11 @@
-import { useSelector } from 'react-redux'
+
 import {LOAD_NEWS, WORD_SEARCH, ID_ENGLISH,INDEX_ARRAY,TOTAL_RESULT} from '../Store/Type'
 const initState = {
  cards:[],
  word:'',
  lang:1,
  index:0,
- pageSize:5,
+ pageSize:20,
  page:1,
  totalResults:0,
  totalPage:0

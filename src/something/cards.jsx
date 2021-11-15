@@ -1,11 +1,9 @@
 import React, {useState, useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { View, Text, Button, Image ,FlatList, ActivityIndicator, StyleSheet,Dimensions, TouchableOpacity } from 'react-native';
-//import { Api } from '../Api/Api';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { loadnews, changeIndex,totalres } from '../Reducer/SearchReducer';
 import { ScrollView } from 'react-native-gesture-handler';
-import {Card} from './card'
-//import axios from 'axios';
+
 import uuid from 'uuid'
 
 export const Cards = ({navigation}) => {
@@ -20,41 +18,20 @@ export const Cards = ({navigation}) => {
     let pg = useSelector((state)=>state.search.page);
     let pgSize = useSelector((state)=>state.search.pageSize);//Кол-во новостей на странице
     const totalPage = Math.ceil(total/pgSize) //общее кол-во страниц
-   // console.log(state) 
-   console.log(useSelector((state)=>state.search.cards))
     const getMovies = async () => {
-   
        try {
-
         const response = await fetch(`https://newsapi.org/v2/everything?q=${wordSe}&page=${pg}&pageSize=${pgSize}&apiKey=482d083900f44dbc992e9d0195a02dca`);
         const json = await response.json();
         dispatch(totalres(json.totalResults))
         setData(json.articles);
-        dispatch (loadnews(json.articles));
-        
+        dispatch (loadnews(json.articles));  
       } catch (error) {
         console.error(error);
       } finally {
-        setLoading(false);
-        
+        setLoading(false); 
       }
     }
 
-   // const PG = async() => {
-   //  try {
-
-     //   const response = await fetch(`https://newsapi.org/v2/everything?q=${wordSe}&page=${pageStr}&pageSize=${pgSize}&apiKey=482d083900f44dbc992e9d0195a02dca`);
-     //   const json = await response.json();
-      //  dispatch(totalres(json.totalResults))
-      //  setData(json.articles);
-      //  dispatch (loadnews(json.articles));
-    //  } catch (error) {
-     //   console.error(error);
-    //  } finally {
-    //    setLoading(false);
-        
-   //   }
-  //  }
     useEffect(() => {
       getMovies();
     }, []);
@@ -84,21 +61,16 @@ export const Cards = ({navigation}) => {
  }
  const onLeft = () =>{
    setPage(pageStr - 1)
-   //dispatch (loadnews([]));
-   //PG();
-   
  }
  const onRight  = () =>{
    setPage(pageStr + 1)
-   //dispatch (loadnews([]));
-   //PG();
+
  }
  
   let rr = data.map((item, index)=>{
     let img = {uri:item.urlToImage}
-//onPress={()=>{press(index)}}
 return <>
-<TouchableOpacity  onPress={()=>{press(index)}}>
+<TouchableOpacity  onPress={()=>{press(index)}} key={uuid()}>
 
 <Image style={styles.im} resizeMode="cover"  source={img} key={uuid()}/>
 <Text style={styles.title} key={uuid()}>{item.title}</Text>
@@ -109,8 +81,8 @@ return <>
     return (
       <View style={{ flex: 1, padding: 24 }}>
      {isLoading ? <Text>ЗАГРУЗКА......</Text>: (
-       <ScrollView>{rr}
-       <View style={styles.pagin}>
+       <ScrollView key={uuid()}>{rr}
+       <View style={styles.pagin} key={uuid()}>
        <TouchableOpacity style={styles.boxPagin} onPress={()=>{onLeft()}} key={uuid()}>
        <Text style={styles.txt} key={uuid()}>{left}</Text>
        </TouchableOpacity>

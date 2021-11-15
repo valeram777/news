@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { View, Text, Button, Image }from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {MainScreen} from '../MainScreen'
@@ -15,10 +14,10 @@ export const AppPage = () => {
     
     <NavigationContainer>
       <Stack.Navigator initialRouteName="MainScreen" >
-        <Stack.Screen name="MainScreen" component={MainScreen}  /> 
-        <Stack.Screen name="AboutScreen" component={AboutScreen} />
-        <Stack.Screen name="ResultScreen" component={ResultScreen} />
-        <Stack.Screen name="Cards" component={Cards} />
+        <Stack.Screen name="MainScreen" component={MainScreen} options={{ title: 'Поиск новостей' }} /> 
+        <Stack.Screen name="AboutScreen" component={AboutScreen} options={{ title: 'О программе' }}/>
+        <Stack.Screen name="ResultScreen" component={ResultScreen} options={{ title: 'Результат поиска' }}/>
+        <Stack.Screen name="Cards" component={Cards} options={{ title: 'Подробная информация' }}/>
       </Stack.Navigator>
     </NavigationContainer>
    
